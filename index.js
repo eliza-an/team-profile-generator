@@ -18,7 +18,7 @@ function teamManager() {
     .prompt([
         {
           type: "input",
-          name: "mamagerName",
+          name: "managerName",
           message: "Please enter Team Manager's name",
 
 
@@ -55,16 +55,18 @@ function teamManager() {
       ]) 
     }
 
-teamManager.then((response)=>{
-if (response.Manager==='Add an Engineer'){
+teamManager().then((response)=>{
+    let name=response.ManagerName
+    let id=response.managersEmployeeID
+    let email=respone.managersEmail
+    let officeNumber=response.managersOfficeNumber
+    
+if (response.InternOrEngineer==='Add an Engineer'){
     addEngineer()
-}else if(response.Manager==='Add an intern'){
+}else if(response.InternOrEngineer==='Add an intern'){
     addIntern()
-}else{
-   return
 }
 })
-
 
 
 
@@ -103,10 +105,15 @@ if (response.Manager==='Add an Engineer'){
                 message: "Please enter Engineer's Github Username",
       
               },
+              
           ]) 
         }
 
-//prompts for team manager
+
+     
+
+
+//prompts for intern
 function addIntern() {
     return inquirer
     .prompt([
@@ -140,9 +147,13 @@ function addIntern() {
             message: "Please enter Intern's School",
   
           },
+         
       ]) 
     }
 
 
 
-    teamManager()
+let EmployeeObjects=[addIntern.response, teamManager.response, addEngineer.response]
+
+//render(EmployeeObjects)
+console.log(EmployeeObjects)
