@@ -50,7 +50,7 @@ function teamManager() {
     }
 
 
-//prompts for team manager
+//prompts for team engineer
     function askEngineer() {
         return inquirer
         .prompt([
@@ -87,7 +87,43 @@ function teamManager() {
           ]) 
         }
 
+//prompts for team manager
+function askIntern() {
+    return inquirer
+    .prompt([
+        {
+          type: "input",
+          name: "InternName",
+          message: "Please enter Intern's name",
 
 
-        
+          // The users input must be letters
+          validate: val => /[a-z]/gi.test(val),          
+        },
+        {
+            type: "input",
+            name: "InternEmployeeID",
+            message: "Please enter Intern's  Employee ID",
+  
+  
+            // The users input must be letters
+            validate: val => /[a-z1-9]/gi.test(val),          
+          },
+          {
+            type: "input",
+            name: "InternEmail",
+            message: "Please enter Intern's Email",
+  
+          },
+          {
+            type: "input",
+            name: "InternSchool",
+            message: "Please enter Intern's School",
+  
+          },
+      ]) 
+    }
+
+
+
     teamManager()
