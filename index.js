@@ -49,15 +49,15 @@ function teamManager() {
       ]) .then
     }
 
-    
-//prompts for 
-    function teamManager() {
+
+//prompts for team manager
+    function askEngineer() {
         return inquirer
         .prompt([
             {
               type: "input",
-              name: "mamagerName",
-              message: "Please enter Team Manager's name",
+              name: "EngineerName",
+              message: "Please enter Engineer's name",
     
     
               // The users input must be letters
@@ -65,8 +65,8 @@ function teamManager() {
             },
             {
                 type: "input",
-                name: "managersEmployeeID",
-                message: "Please enter Team Manager's  Employee ID",
+                name: "EngineerEmployeeID",
+                message: "Please enter Engineer's  Employee ID",
       
       
                 // The users input must be letters
@@ -74,16 +74,20 @@ function teamManager() {
               },
               {
                 type: "input",
-                name: "managersEmail",
-                message: "Please enter Team Manager's Email",
+                name: "EngineerEmail",
+                message: "Please enter Engineer's Email",
       
               },
               {
                 type: "input",
-                name: "managersOfficeNumber",
-                message: "Please enter Team Manager's Office Number",
+                name: "EngineerGithub",
+                message: "Please enter Engineer's Github Username",
       
               },
           ]) 
         }
+
+
+
+        
     teamManager()
