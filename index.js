@@ -46,12 +46,31 @@ function teamManager() {
             message: "Please enter Team Manager's Office Number",
   
           },
-      ]) .then
+          {
+            type: 'list',
+            name: 'InternOrEngineer',
+            message: 'Would you like to add an engineer, add an intern or finish building the team?',
+            choices: ['Add an Engineer', 'Add an intern', 'Finish']
+          },
+      ]) 
     }
+
+teamManager.then((response)=>{
+if (response.Manager==='Add an Engineer'){
+    addEngineer()
+}else if(response.Manager==='Add an intern'){
+    addIntern()
+}else{
+   return
+}
+})
+
+
+
 
 
 //prompts for team engineer
-    function askEngineer() {
+    function addEngineer() {
         return inquirer
         .prompt([
             {
@@ -88,7 +107,7 @@ function teamManager() {
         }
 
 //prompts for team manager
-function askIntern() {
+function addIntern() {
     return inquirer
     .prompt([
         {
