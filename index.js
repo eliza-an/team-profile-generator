@@ -13,7 +13,7 @@ const render = require("./src/page-template.js");
 
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
-function teamManager() {
+ function teamManager() {
     return ([
         {
           type: "input",
@@ -53,21 +53,9 @@ function teamManager() {
           },
       ]) 
     }
+    
 
-inquirer.prompt(teamManager).then((response)=>{
-    let Mname=response.ManagerName
-    let Mid=response.managersEmployeeID
-    let Memail=respone.managersEmail
-    let MofficeNumber=response.managersOfficeNumber
-
-
-if (response.InternOrEngineer==='Add an Engineer'){
-    addEngineer()
-}else if(response.InternOrEngineer==='Add an intern'){
-    addIntern()
-}
-})
-
+console.log('here')
 
 
 
@@ -108,17 +96,7 @@ if (response.InternOrEngineer==='Add an Engineer'){
           ]) 
         }
 
-inquirer.prompt(addEngineer).then((response)=>{
-            let Ename=response.EngineerName
-            let Eid=response.EngineerEmployeeID
-            let Eemail=respone.EngineerEmail
-            let EGithub=response.EngineerGithub
-            if (response.InternOrEngineer==='Add an Engineer'){
-                addEngineer()
-            }else if(response.InternOrEngineer==='Add an intern'){
-                addIntern()
-            }
-            })
+
      
 
 
@@ -159,10 +137,37 @@ function addIntern() {
       ]) 
     }
 
-    inquirer.prompt(addIntern).then((response)=>{
+async function ask(){
+   await inquirer.prompt(teamManager()).then((response)=>{
+        let Mname=response.ManagerName
+        let Mid=response.managersEmployeeID
+        let Memail=response.managersEmail
+        let MofficeNumber=response.managersOfficeNumber
+    
+    
+    if (response.InternOrEngineer==='Add an Engineer'){
+        addEngineer()
+    }else if(response.InternOrEngineer==='Add an intern'){
+        addIntern()
+    }
+    })
+
+   await inquirer.prompt(addEngineer()).then((response)=>{
+        let Ename=response.EngineerName
+        let Eid=response.EngineerEmployeeID
+        let Eemail=respone.EngineerEmail
+        let EGithub=response.EngineerGithub
+        if (response.InternOrEngineer==='Add an Engineer'){
+            addEngineer()
+        }else if(response.InternOrEngineer==='Add an intern'){
+            addIntern()
+        }
+        })    
+
+    await inquirer.prompt(addIntern()).then((response)=>{
         let Iname=response.InternName
         let Iid=response.InternEmployeeID
-        let Iemail=respone.InternEmail
+        let Iemail=response.InternEmail
         let ISchool=response.InternSchool
         if (response.InternOrEngineer==='Add an Engineer'){
             addEngineer()
@@ -170,12 +175,13 @@ function addIntern() {
             addIntern()
         }
         })
- 
-        const manager= new Manager(Mname,Mid,Memail,MofficeNumber)
+      const manager= new Manager(Mname,Mid,Memail,MofficeNumber)
         const engineer= new Engineer(Ename,Eid,Eemail,EGithub)
         const intern= new Intern(Iname,Iid,Iemail,ISchool)
 
-let EmployeeObjects=[manager, engineer,intern]
+}
+  ask()    
+let EmployeeObjects=[]
 
 //render(EmployeeObjects)
 console.log(EmployeeObjects)
