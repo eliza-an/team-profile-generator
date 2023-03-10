@@ -182,6 +182,7 @@ async function ask(){
 }
   ask()    
 let EmployeeObjects=[]
+EmployeeObjects.push(manager, engineer, intern)
 
 //render(EmployeeObjects)
 console.log(EmployeeObjects)
