@@ -54,7 +54,7 @@ return(
  {
             type: 'list',
             name: 'InternOrEngineer',
-            message: 'Would you like to add an engineer, add an intern or finish building the team?',
+            message: 'Would you like to add a manager, add an engineer, add an intern or finish building the team?',
             choices: ['Add a Manager','Add an Engineer', 'Add an intern', 'Finish']
           }
        ) }
