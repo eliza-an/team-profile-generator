@@ -144,7 +144,7 @@ let EmployeeObjects=[]
 async function ask(){
 
     await inquirer.prompt(teamManager()).then(response=>{
-            let Mname=response.ManagerName
+            let Mname=response.managerName
             let Mid=response.managersEmployeeID
             let Memail=response.managersEmail
             let MofficeNumber=response.managersOfficeNumber
@@ -175,14 +175,27 @@ async function ask(){
             const intern= new Intern(Iname,Iid,Iemail,ISchool)
             EmployeeObjects.push(intern)
             })
+        }else if(answer.InternOrEngineer==='Add a Manager') {
+             await inquirer.prompt(teamManager()).then(response=>{
+            let Mname=response.managerName
+            let Mid=response.managersEmployeeID
+            let Memail=response.managersEmail
+            let MofficeNumber=response.managersOfficeNumber
+            const manager= new Manager(Mname,Mid,Memail,MofficeNumber)
+            EmployeeObjects.push(manager)
+            })
         }else if(answer.InternOrEngineer==='Finish'){
-        break
+            fs.writeFile('./team-profile.html',render(EmployeeObjects), (error)=> console.log(error) )
+            break
         }
 
     }   
 } 
 
 ask()
+
+
+
 //    // if  (response.InternOrEngineer==='Add an Engineer'){
          
 //       //  if (response.InternOrEngineer==='Add an Engineer'){
@@ -200,7 +213,7 @@ ask()
 //         }
 //         })
   
-//      console.log(render(EmployeeObjects))}
+
 //     }  )
 
     
