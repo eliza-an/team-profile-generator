@@ -3,8 +3,11 @@
   # Team Profile Generator
 
   # Description
-  This was challenge 12 for the Trillogy Skills Bootcamp. The aim of this challenege was to use classes and test driven development to create a team profile generator. This chanllenge was very hard for me to grasp. I rreally enjoyed the use of tests to ensure all the classes worked correctly. Moreover, the use of the 'main menu' to create as many ememployees as the user wants was very difficult as well. Overall I learned a lot from this assignment, especially the order in which writing code is most efficient. A great learning experience
+  This was challenge 12 for the Trillogy Skills Bootcamp. The aim of this challenege was to use classes and test driven development to create a team profile generator. This challenge was very hard for me to grasp. I really enjoyed the use of tests to ensure all the classes worked correctly. Moreover, the use of the 'main menu' to create as many employees as the user wants was very difficult as well. Overall I learned a lot from this assignment, especially the order in which writing code is most efficient. A great learning experience
 
+![image](https://user-images.githubusercontent.com/118762745/224445385-c07e7462-045a-4901-8aa3-9cbc782d6308.png)
+![image](https://user-images.githubusercontent.com/118762745/224445115-7067d1ce-2166-4160-bf2b-12378b2e80c1.png)
+![image](https://user-images.githubusercontent.com/118762745/224445147-4622ebcc-0dcc-4b9a-bfcc-4716fb035026.png)
 
 
 
@@ -32,9 +35,13 @@
   I would like to thank Nathalie Storey for her Repo as it helped me debug the issues existing in my code. Further I would like to thank Joel Morley for his helpful comments and discussions. The starter code was provided by Trillogy Skills Bootcamp. 
 
 Testing using jest https://stackoverflow.com/questions/28725955/how-do-i-test-a-single-file-using-jest 
+
 await function https://sebhastian.com/javascript-wait-for-function-to-finish/ 
+
 The use of super  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super 
+
 using push() https://www.w3schools.com/jsref/jsref_push.asp 
+
 Nathalie’s Github https://github.com/NCStorey 
 
 
@@ -49,5 +56,5 @@ Nathalie’s Github https://github.com/NCStorey
 
   ## Questions
   Please reach out if you would like clarification on this project via my Github: https://github.com/eliza-an
-  or my email my email
+  or my email
   
