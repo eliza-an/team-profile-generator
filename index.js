@@ -45,18 +45,19 @@ const render = require("./src/page-template.js");
             message: "Please enter Team Manager's Office Number",
   
           },
-          {
-            type: 'list',
-            name: 'InternOrEngineer',
-            message: 'Would you like to add an engineer, add an intern or finish building the team?',
-            choices: ['Add an Engineer', 'Add an intern', 'Finish']
-          },
+         
       ]) 
     }
     
-
-console.log('here')
-
+function InternOrEngineer(){
+return(
+ {
+            type: 'list',
+            name: 'InternOrEngineer',
+            message: 'Would you like to add an engineer, add an intern or finish building the team?',
+            choices: ['Add a Manager','Add an Engineer', 'Add an intern', 'Finish']
+          }
+       ) }
 
 
 //prompts for team engineer
@@ -141,56 +142,76 @@ function addIntern() {
 let EmployeeObjects=[]
 
 async function ask(){
-   await inquirer.prompt(teamManager()).then((response)=>{
-        let Mname=response.ManagerName
-        let Mid=response.managersEmployeeID
-        let Memail=response.managersEmail
-        let MofficeNumber=response.managersOfficeNumber
-    const manager= new Manager(Mname,Mid,Memail,MofficeNumber)
-    EmployeeObjects.push(manager)
-    
-    if (response.InternOrEngineer==='Add an Engineer'){
-        addEngineer()
-    }else if(response.InternOrEngineer==='Add an intern'){
-        addIntern()
-    }
+
+    await inquirer.prompt(teamManager()).then(response=>{
+            let Mname=response.ManagerName
+            let Mid=response.managersEmployeeID
+            let Memail=response.managersEmail
+            let MofficeNumber=response.managersOfficeNumber
+        const manager= new Manager(Mname,Mid,Memail,MofficeNumber)
+        EmployeeObjects.push(manager)
     })
 
-   await inquirer.prompt(addEngineer()).then((response)=>{
-        let Ename=response.EngineerName
-        let Eid=response.EngineerEmployeeID
-        let Eemail=response.EngineerEmail
-        let EGithub=response.EngineerGithub
-        const engineer= new Engineer(Ename,Eid,Eemail,EGithub)
-        EmployeeObjects.push(engineer)
-        if (response.InternOrEngineer==='Add an Engineer'){
-            addEngineer()
-        }else if(response.InternOrEngineer==='Add an intern'){
-            addIntern()
-        }
-        })    
 
-    await inquirer.prompt(addIntern()).then((response)=>{
-        let Iname=response.InternName
-        let Iid=response.InternEmployeeID
-        let Iemail=response.InternEmail
-        let ISchool=response.InternSchool 
-        const intern= new Intern(Iname,Iid,Iemail,ISchool)
-        EmployeeObjects.push(intern)
-        if (response.InternOrEngineer==='Add an Engineer'){
-            addEngineer()
-        }else if(response.InternOrEngineer==='Add an intern'){
-            addIntern()
+    while (true){
+    let answer= await  inquirer.prompt(InternOrEngineer()) 
+    console.log(answer.InternOrEngineer)
+    if (answer.InternOrEngineer==='Add an Engineer') {
+        await inquirer.prompt(addEngineer()).then((response)=>{
+            let Ename=response.EngineerName
+            let Eid=response.EngineerEmployeeID
+            let Eemail=response.EngineerEmail
+            let EGithub=response.EngineerGithub
+            const engineer= new Engineer(Ename,Eid,Eemail,EGithub)
+            EmployeeObjects.push(engineer)
+            } )
+
+        }else if(answer.InternOrEngineer==='Add an intern'){
+           await  inquirer.prompt(addIntern()).then((response)=>{
+            let Iname=response.InternName
+            let Iid=response.InternEmployeeID
+            let Iemail=response.InternEmail
+            let ISchool=response.InternSchool 
+            const intern= new Intern(Iname,Iid,Iemail,ISchool)
+            EmployeeObjects.push(intern)
+            })
+        }else if(answer.InternOrEngineer==='Finish'){
+        break
         }
-        })
-      
-        
- console.log(render(EmployeeObjects))
+
+    }   
+} 
+
+ask()
+//    // if  (response.InternOrEngineer==='Add an Engineer'){
+         
+//       //  if (response.InternOrEngineer==='Add an Engineer'){
+//             addEngineer()
+//        // }else if(response.InternOrEngineer==='Add an intern'){
+//             addIntern()
+//       //  }
+//       //  })   
+//     }else if(response.InternOrEngineer==='Add an intern'){
+         
+//         if (response.InternOrEngineer==='Add an Engineer'){
+//             addEngineer()
+//         }else if(response.InternOrEngineer==='Add an intern'){
+//             addIntern()
+//         }
+//         })
+  
+//      console.log(render(EmployeeObjects))}
+//     }  )
+
+    
+
+   
+
+
 
        
 
-}
-  ask()    
+//
 
 //render(EmployeeObjects)
-console.log(EmployeeObjects)
+//
