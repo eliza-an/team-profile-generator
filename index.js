@@ -185,7 +185,8 @@ async function ask(){
             EmployeeObjects.push(manager)
             })
         }else if(answer.InternOrEngineer==='Finish'){
-            fs.writeFile('./team-profile.html',render(EmployeeObjects), (error)=> console.log(error) )
+            fs.writeFile(outputPath, render(EmployeeObjects), (error)=> console.log(error) )
+            
             break
         }
 
