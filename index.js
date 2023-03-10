@@ -137,13 +137,17 @@ function addIntern() {
       ]) 
     }
 
+
+let EmployeeObjects=[]
+
 async function ask(){
    await inquirer.prompt(teamManager()).then((response)=>{
         let Mname=response.ManagerName
         let Mid=response.managersEmployeeID
         let Memail=response.managersEmail
         let MofficeNumber=response.managersOfficeNumber
-    
+    const manager= new Manager(Mname,Mid,Memail,MofficeNumber)
+    EmployeeObjects.push(manager)
     
     if (response.InternOrEngineer==='Add an Engineer'){
         addEngineer()
@@ -155,8 +159,10 @@ async function ask(){
    await inquirer.prompt(addEngineer()).then((response)=>{
         let Ename=response.EngineerName
         let Eid=response.EngineerEmployeeID
-        let Eemail=respone.EngineerEmail
+        let Eemail=response.EngineerEmail
         let EGithub=response.EngineerGithub
+        const engineer= new Engineer(Ename,Eid,Eemail,EGithub)
+        EmployeeObjects.push(engineer)
         if (response.InternOrEngineer==='Add an Engineer'){
             addEngineer()
         }else if(response.InternOrEngineer==='Add an intern'){
@@ -168,21 +174,23 @@ async function ask(){
         let Iname=response.InternName
         let Iid=response.InternEmployeeID
         let Iemail=response.InternEmail
-        let ISchool=response.InternSchool
+        let ISchool=response.InternSchool 
+        const intern= new Intern(Iname,Iid,Iemail,ISchool)
+        EmployeeObjects.push(intern)
         if (response.InternOrEngineer==='Add an Engineer'){
             addEngineer()
         }else if(response.InternOrEngineer==='Add an intern'){
             addIntern()
         }
         })
-      const manager= new Manager(Mname,Mid,Memail,MofficeNumber)
-        const engineer= new Engineer(Ename,Eid,Eemail,EGithub)
-        const intern= new Intern(Iname,Iid,Iemail,ISchool)
+      
+        
+ console.log(render(EmployeeObjects))
+
+       
 
 }
   ask()    
-let EmployeeObjects=[]
-EmployeeObjects.push(manager, engineer, intern)
 
 //render(EmployeeObjects)
 console.log(EmployeeObjects)
